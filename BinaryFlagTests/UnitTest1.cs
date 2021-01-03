@@ -55,19 +55,19 @@ namespace BinaryFlagTests {
         }
 
         [Theory]
-        [InlineData(47)]
-        [InlineData(8888888)]
-        public void ResetOutOfRangeTest(ulong length) {
+        [InlineData(47, 48)]
+        [InlineData(8888888, 8888889)]
+        public void ResetOutOfRangeTest(ulong length, ulong position) {
             var binaryFlag = new MultipleBinaryFlag(length);
-            Assert.Throws<ArgumentOutOfRangeException>(() => binaryFlag.ResetFlag(length + 1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => binaryFlag.ResetFlag(position));
         }
 
         [Theory]
-        [InlineData(47)]
-        [InlineData(8888888)]
-        public void SetOutOfRangeTest(ulong length) {
+        [InlineData(47, 48)]
+        [InlineData(8888888, 8888889)]
+        public void SetOutOfRangeTest(ulong length, ulong position) {
             var binaryFlag = new MultipleBinaryFlag(length);
-            Assert.Throws<ArgumentOutOfRangeException>(() => binaryFlag.SetFlag(length + 1));
+            Assert.Throws<ArgumentOutOfRangeException>(() => binaryFlag.SetFlag(position));
         }
 
         [Theory]
